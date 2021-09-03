@@ -1,4 +1,4 @@
-The one line Mugen installer.
+The one line Mugen installer. (NOT FOR ULTRA)
 
 [ Installation ]
 Just type: curl -sSL https://git.io/JEiR7 | bash
