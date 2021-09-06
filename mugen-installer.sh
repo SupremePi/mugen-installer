@@ -104,15 +104,14 @@ unzip -o mugen100.zip
 sudo rm mugen100.zip
 sudo mv mugen Mugen
 cd
+
 sudo chmod 755 -R /home/pi/RetroPie/roms/wine/games/Mugen
 sudo chown pi:pi -R /home/pi/RetroPie/roms/wine/games/Mugen
 cat <<\EOF85222 > "/home/pi/RetroPie/roms/wine/games/mugen.sh"
 #!/bin/bash
-
+xset -dpms s off s noblank
 cd "/home/pi/RetroPie/roms/wine/games/Mugen"
-
 qjoypad "mugen" &
-
 WINEDEBUG=-all LD_LIBRARY_PATH="/opt/retropie/supplementary/mesa/lib/" setarch linux32 -L /opt/retropie/emulators/wine/bin/wine '/home/pi/RetroPie/roms/wine/games/Mugen/mugen.exe'
 EOF85222
 
@@ -168,9 +167,93 @@ sudo apt-get install qjoypad
         sudo rm /home/pi/.qjoypad3/*.lyt
     fi
 
-wget -q https://www.mediafire.com/file/wo2odt49p3y1jjr/Baldurs_Gate.lyt -P /home/pi/.qjoypad3/
-wget -q https://www.mediafire.com/file/zs16mbv1k4uhkgh/mugen.lyt -P /home/pi/.qjoypad3/
-wget -q https://www.mediafire.com/file/7dq9302v4257gjl/Spooky_Castle.lyt -P /home/pi/.qjoypad3/
+cat <<\EOF22 > "/home/pi/.qjoypad3/Spooky_Castle.lyt"
+# QJoyPad 4.1 Layout File
+
+Joystick 1 {
+	Axis 1: +key 114, -key 113
+	Axis 2: +key 116, -key 111
+	Axis 4: gradient, maxSpeed 100, mouse+h
+	Axis 5: gradient, maxSpeed 100, mouse+v
+	Axis 6: +key 114, -key 113
+	Axis 7: +key 116, -key 111
+	Button 1: key 54
+	Button 2: key 50
+	Button 3: key 52
+	Button 4: key 53
+	Button 5: key 37
+	Button 6: key 64
+	Button 9: key 9
+	Button 10: key 104
+}
+
+Joystick 2 {
+	Axis 1: +key 40, -key 38
+	Axis 2: +key 39, -key 25
+	Button 1: key 45
+	Button 2: key 44
+	Button 3: key 31
+	Button 4: key 32
+	Button 5: key 33
+	Button 6: key 46
+	Button 9: key 9
+	Button 10: key 36
+}
+EOF22
+
+
+cat <<\EOF33 > "/home/pi/.qjoypad3/mugen.lyt"
+# QJoyPad 4.1 Layout File
+
+Joystick 1 {
+	Axis 6: +key 40, -key 38
+	Axis 7: +key 39, -key 25
+	Button 1: key 45
+	Button 2: key 44
+	Button 3: key 31
+	Button 4: key 32
+	Button 5: key 33
+	Button 6: key 46
+	Button 9: key 9
+	Button 10: key 36
+}
+EOF33
+
+
+cat <<\EOF44 > "/home/pi/.qjoypad3/Baldurs_Gate.lyt"
+# QJoyPad 4.1 Layout File
+
+Joystick 1 {
+	Axis 1: +key 114, -key 113
+	Axis 2: +key 116, -key 111
+	Axis 4: gradient, maxSpeed 5, mouse+h
+	Axis 5: gradient, maxSpeed 5, tCurve 0, mouse+v
+	Axis 6: gradient, +key 114, -key 113
+	Axis 7: +key 116, -key 111
+	Button 1: key 54
+	Button 2: key 50
+	Button 3: mouse 1
+	Button 4: mouse 3
+	Button 5: key 37
+	Button 7: key 119
+	Button 8: key 36
+	Button 9: key 9
+	Button 10: key 104
+}
+
+Joystick 2 {
+	Axis 1: +key 40, -key 38
+	Axis 2: +key 39, -key 25
+	Button 1: key 45
+	Button 2: key 44
+	Button 3: key 31
+	Button 4: key 32
+	Button 5: key 33
+	Button 6: key 46
+	Button 9: key 9
+	Button 10: key 36
+}
+EOF44
 
 sudo chmod +x /home/pi/.qjoypad3/*
 
